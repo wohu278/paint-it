@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <section class="container">
         <div id="toolbar">
             <h1>Paint It</h1>
+            <label for="stroke">Stroke</label>
             <input id="stroke" name="stroke" type="color">
+            <label for="lineWidth">Line Widht</label>
+            <input type="number" name="lineWidth" id="lineWidth" value="5">
+            <button id="clear">Clear</button>
+        </div>
+        <div class="drawing-board">
+            <canvas id="drawing-board"></canvas>
         </div>
     </section>
+    <script src="/js/draw.js"></script>
 </body>
 </html>
