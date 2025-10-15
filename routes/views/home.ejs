@@ -8,6 +8,9 @@
 </head>
 <body>
     <section class="container">
+        <div class="drawing-board">
+            <canvas id="drawing-board"></canvas>
+        </div>
         <div id="toolbar">
             <h1>Paint It</h1>
             <label for="stroke">Stroke</label>
@@ -16,9 +19,6 @@
             <input type="number" name="lineWidth" id="lineWidth" value="5">
             <button id="clear">Clear</button>
             <button id="save">Save</button>
-        </div>
-        <div class="drawing-board">
-            <canvas id="drawing-board"></canvas>
         </div>
     </section>
     <script src="/js/draw.js"></script>

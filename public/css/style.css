@@ -4,12 +4,13 @@ body {
     height: 100%;
     overflow: hidden;
     color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
 
-    background: rgb(37, 123, 37);
     text-align: center;
+    justify-content: center;
 
 }
 
@@ -17,28 +18,34 @@ h1 {
 
     height: 100vh;
     display: flex;
+    flex-direction: column;
 
 }
 
 #toolbar {
 
     display: flex;
-    flex-direction: column;
-    padding: 5px;
-    width: 200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    height: 80px;
+    gap: 10px;
     background-color: black;
 
 }
 
 #toolbar * {
 
-    margin-bottom: 6px;
+    margin-bottom: 0px;
+    padding: 5px;
 
 }
 
 .drawing-board {
   flex-grow: 1;
   display: flex;
+  background: white;
 }
 
 canvas {
@@ -46,4 +53,37 @@ canvas {
   height: 100%;
   display: block;
   cursor: crosshair;
+  background: white;
+  touch-action: none;
+}
+
+input{
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button{
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+}
+
+#toolbar button:hover{
+    width: 70px;
+    height: 40px;
+    transition: .3s;
+    background-color: green;
+    color: white;
+}
+
+#toolbar h1{
+    margin: 0
+}
+
+#lineWidth{
+    width: 50px;
+    text-align: center;
 }

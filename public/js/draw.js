@@ -2,14 +2,23 @@ const canvas = document.getElementById('drawing-board')
 const toolbar = document.getElementById('toolbar')
 const contx = canvas.getContext('2d')
 
-const canvasOffsetX = canvas.offsetLeft
-const canvasOffsetY = canvas.offsetTop
-
-canvas.width = window.innerWidth - canvasOffsetX
-canvas.height = window.innerHeight - canvasOffsetY
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 
 let isPainting = false
 let lineWidth = 5
+
+
+function resizeCanvas() {
+
+    canvas.width = canvas.clientWidth
+    canvas.height = canvas.clientHeight
+
+}
+
+window.addEventListener('resize', resizeCanvas)
+
+resizeCanvas()
 
 toolbar.addEventListener('click', e => {
 
@@ -56,10 +65,14 @@ const draw = e => {
     contx.lineWidth = lineWidth
     contx.lineCap = 'round'
 
-    contx.lineTo(e.clientX - canvasOffsetX, e.clientY)
+    const rect = canvas.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    contx.lineTo(x, y)
     contx.stroke()
     contx.beginPath()
-    contx.moveTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY)
+    contx.moveTo(x, y)
 
 }
 
@@ -69,7 +82,8 @@ canvas.addEventListener('mousedown', o => {
 
     isPainting = true
     contx.beginPath()
-    contx.moveTo(o.clientX - canvasOffsetX, o.clientY - canvasOffsetY)
+    const rect = canvas.getBoundingClientRect()
+    contx.moveTo(o.clientX - rect.left, o.clientY - rect.top)
 
 })
 
@@ -89,6 +103,8 @@ canvas.addEventListener('touchstart', e => {
     e.preventDefault()
     const touch = e.touches[0]
     const rect = canvas.getBoundingClientRect()
+    const x = touch.clientX - rect.left
+    const y = touch.clientY - rect.top
     isPainting = true
     contx.beginPath()
     contx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top)
@@ -104,6 +120,8 @@ canvas.addEventListener('touchmove', e => {
     }
     const touch = e.touches[0]
     const rect = canvas.getBoundingClientRect()
+    const x = touch.clientX - rect.left
+    const y = touch.clientY - rect.top
 
     contx.lineWidth = lineWidth
     contx.lineCap = 'round'
@@ -118,14 +136,3 @@ canvas.addEventListener('touchend', e => {
     isPainting = false
     contx.beginPath()
 })
-
-function resizeCanvas() {
-
-    canvas.width = canvas.clientWidth
-    canvas.height = canvas.clientHeight
-
-}
-
-window.addEventListener('resize', resizeCanvas)
-
-resizeCanvas()
