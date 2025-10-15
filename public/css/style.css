@@ -16,14 +16,15 @@ h1 {
 
 .container {
 
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 
 }
 
 #toolbar {
 
+    flex-shrink: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -43,9 +44,10 @@ h1 {
 }
 
 .drawing-board {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   background: white;
+  overflow: hidden;
 }
 
 canvas {
@@ -54,7 +56,6 @@ canvas {
   display: block;
   cursor: crosshair;
   background: white;
-  touch-action: none;
 }
 
 input{
