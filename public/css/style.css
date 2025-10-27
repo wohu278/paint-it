@@ -89,11 +89,27 @@ button{
     text-align: center;
 }
 
-@media only screen and ( max-width: 600px) {
+@media only screen and ( max-width: 700px ) {
     
     h1{
 
         font-size: 16px;
+
+    }
+
+    #toolbar{
+
+        flex-direction: flex-start;
+        padding: 8px;
+        gap: 8px;
+
+    }
+
+    button, input {
+
+        width: 25px;
+        height: 25px;
+        flex-shrink: 0;
 
     }
     
