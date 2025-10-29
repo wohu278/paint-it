@@ -55,7 +55,11 @@ toolbar.addEventListener('change', i => {
 
     if(i.target.id === 'stroke') {
 
-        contx.strokeStyle = i.target.value
+        brushColor = i.target.value
+
+        if(!isErasing) {
+            contx.strokeStyle = brushColor
+        }
 
     }
 
@@ -72,6 +76,7 @@ brush.addEventListener('click', e => {
 
     isErasing = false
     contx.globalCompositeOperation = 'source-over'
+    contx.strokeStyle = brushColor
     brush.classList.add('active')
     eraser.classList.remove('active')
 
@@ -82,6 +87,7 @@ eraser.addEventListener('click', e => {
 
     isErasing = true
     contx.globalCompositeOperation = 'destination-out'
+    contx.lineWidth = lineWidth
     eraser.classList.add('active')
     brush.classList.remove('active')
 

@@ -89,7 +89,7 @@ button{
     text-align: center;
 }
 
-@media only screen and ( max-width: 700px ) {
+@media ( max-width: 700px ) {
     
     h1{
 
@@ -101,13 +101,16 @@ button{
 
         flex-direction: flex-start;
         padding: 8px;
-        gap: 8px;
+        gap: 3px;
+        height: 150px;
+        align-items: center;
+        justify-content: center;
 
     }
 
-    button, input {
+    button, input, #lineWidth {
 
-        width: 25px;
+        width: 45px;
         height: 25px;
         flex-shrink: 0;
 
